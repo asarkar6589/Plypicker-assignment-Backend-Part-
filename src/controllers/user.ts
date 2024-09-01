@@ -71,15 +71,15 @@ export const loginUser = async (
       {
         _id: user._id,
       },
-      "lpwqkoefjrvngkds"
+      process.env.SECRET_KEY!
     );
-
+    
     return res
       .status(200)
       .cookie("token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
         sameSite: "none",
+        secure: true,
         maxAge: 1 * 24 * 60 * 60 * 1000, // 90days
       })
       .json({
@@ -97,13 +97,16 @@ export const logoutUser = async (
   next: NextFunction
 ) => {
   try {
+    console.log(req.cookies);
+    
     return res
       .status(200)
-      .cookie("token", "", {
+      .cookie("token", {
         httpOnly: true,
-        secure: true,
         sameSite: "none",
-        maxAge: 0,
+        secure: true,
+        expires: new Date(0),
+        path: "/"
       })
       .json({
         success: true,
