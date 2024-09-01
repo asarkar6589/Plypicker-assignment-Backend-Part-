@@ -7,7 +7,7 @@
     "start": "node dist/index.js",
     "watch": "tsc -w",
     "build": "tsc",
-    "dev": "npx tsx watch ./src/index.ts"
+    "dev": "nodemon dist/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +27,7 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
+    "@types/d3": "^7.4.3",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/multer": "^1.4.12",
