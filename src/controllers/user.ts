@@ -97,16 +97,13 @@ export const logoutUser = async (
   next: NextFunction
 ) => {
   try {
-    console.log(req.cookies);
-    
     return res
       .status(200)
-      .cookie("token", {
+      .cookie("token", " ", {
         httpOnly: true,
         sameSite: "none",
         secure: true,
-        expires: new Date(0),
-        path: "/"
+        expires: new Date(0)
       })
       .json({
         success: true,
